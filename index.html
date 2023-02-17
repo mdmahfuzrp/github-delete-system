@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family: monospace;">
+    <input type="text" placeholder="Type Delete" id="text-field" style="font-size: 18px; width: 167px;">
+    <button id="delete-btn" style="font-size: 18px;" disabled>Delete</button>
+    <div id="delete-item" style="margin-top: 20px; width: 250px; height: 200px; display: flex; align-items: center; justify-content: center; background-color: aqua;">
+        <h2>This is Hidden Text</h2>
+    </div>
+
+
+    <script>
+        const deleteBtn = document.getElementById('delete-btn');
+        const textField = document.getElementById('text-field');
+        textField.addEventListener('keyup', function(event){
+            const confirmText = event.target.value;
+            if(confirmText === 'Delete'){
+                deleteBtn.removeAttribute('disabled');
+                deleteBtn.addEventListener('click', function(){
+                    const deleteItem = document.getElementById('delete-item');
+                    deleteItem.style.display = 'none';
+                    textField.value  = '';
+                    deleteBtn.disabled = true;
+                })
+            }
+        })
+    </script>
+</body>
+</html>
